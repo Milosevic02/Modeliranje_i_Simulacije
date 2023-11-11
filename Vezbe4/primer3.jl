@@ -22,5 +22,13 @@ x0 = [0.0, 0.0, 0.0, 0.0]
 prob = ODEProblem(dif_jed!, x0, t, p)
 sol = solve(prob)
 
+poz1 = [x[1] for x in sol.u]
+poz2 = [x[3] for x in sol.u]
+
+~,index1 = findmax(abs.(poz1))
+~,index2 = findmax(abs.(poz2))
+plot(sol.t, [poz1, poz2], lw=2, xticks=0:10, label=["x1(t)" "x2(t)"])
+plot!([sol.t[index1]], [poz1[index1]], markershape=:o, label="max_poz1")
+plot!([sol.t[index2]], [poz2[index2]], markershape=:o, label="max_poz2")
 
 
