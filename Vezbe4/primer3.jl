@@ -31,4 +31,9 @@ plot(sol.t, [poz1, poz2], lw=2, xticks=0:10, label=["x1(t)" "x2(t)"])
 plot!([sol.t[index1]], [poz1[index1]], markershape=:o, label="max_poz1")
 plot!([sol.t[index2]], [poz2[index2]], markershape=:o, label="max_poz2")
 
+distance1 = sum(abs.(diff(poz1)))
+distance2 = sum(abs.(diff(poz2)))
+println("Distance traveled by the first body is: ", distance1)
+println("Distance traveled by the second body is: ", distance2)
+
 
