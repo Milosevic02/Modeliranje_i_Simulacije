@@ -22,3 +22,7 @@ plot(sol.t, [v1, v2], lw=2, label=["v1(t)" "v2(t)"])
 plot!([sol.t[index1]], [v1[index1]], markershape=:o, label="max_v1")
 plot!([sol.t[index2]], [v2[index2]], markershape=:o, label="max_v2")
 
+a1 = diff(v1) ./ diff(sol.t)
+a2 = diff(v2) ./ diff(sol.t)
+plot(sol.t[1:end-1], [a1, a2], lw=2, label=["a1(t)", "a2(t)"])
+
