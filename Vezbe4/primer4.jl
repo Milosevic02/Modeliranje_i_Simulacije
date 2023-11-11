@@ -13,3 +13,12 @@ p = (5.0, 8.0, 10.0, 20.0, 20.0, 20.0, 9.81)
 x0 = [2.0, 0.0, 0.0, 0.0]
 prob = ODEProblem(sistem!, x0, t, p)
 sol = solve(prob)
+
+v1 = [x[2] for x in sol.u]
+v2 = [x[4] for x in sol.u]
+~, index1 = findmax(abs.(v1))
+~, index2 = findmax(abs.(v2))
+plot(sol.t, [v1, v2], lw=2, label=["v1(t)" "v2(t)"])
+plot!([sol.t[index1]], [v1[index1]], markershape=:o, label="max_v1")
+plot!([sol.t[index2]], [v2[index2]], markershape=:o, label="max_v2")
+
